@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        infoTabela = [
+            {
+                "username": "Ana",
+                "score": 10,
+                "level": "Easy"
+            },
+            {
+                "username": "José",
+                "score": 15,
+                "level": "Medium"
+            },
+            {
+                "username": "Maria",
+                "score": 30,
+                "level": "Hard"
+            },
+            {
+                "username": "Pedro",
+                "score": 20,
+                "level": "Medium"
+            },
+            {
+                "username": "Joane",
+                "score": 20,
+                "level": "Easy"
+            },
+            {
+                "username": "Gabriel",
+                "score": 50,
+                "level": "Hard"
+            }
+        ]
+        function mostrarPontuacao2() {
+            const Promisse = new Promise(()=>{
+                var select = document.getElementById("option");
+                var opcaoValue = select.options[select.selectedIndex].value;
+
+                document.getElementById("tabela").innerHTML = `<th>Usuário</th>
+                                    <th>Pontuação</th>`
+                infoTabela.forEach((elemento, indice) => {
+                if (elemento.level == opcaoValue) {
+                    document.getElementById("tabela").innerHTML += `
+                                    <tr><td>${elemento.username}</td>
+                                    <td>${elemento.score}</td></tr>`;
+                }
+            })
+        })
+    }
+    </script>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Selecione o nivel de dificuldade para visualizar o ranking</p>
+    <form action="">
+        <select name="nivel" id="option">
+            <option value="Easy">Fácil</option>
+            <option value="Medium">Médio</option>
+            <option value="Hard">Difícil</option>
+        </select>
+        <input type="button" value="Visualizar" onclick="mostrarPontuacao2()">
+    </form>
+    <table id="tabela">
+    </table>
+</body>
+
+</html>
